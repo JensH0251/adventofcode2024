@@ -1,0 +1,14 @@
+() => do
+  val:0
+  lsL:[]
+  lsR:[]
+  ioReadLines(`io/inputday1.txt`).each(item => do 
+    val: item.split(" ")
+    lsL = lsL.add(val.get(0).parseInt())
+    lsR = lsR.add(val.get(-1).parseInt())
+  end) 
+  lsL.each(item => do 
+    if (lsR.findAll(x => x == item).size() > 0) val = val + (item * lsR.findAll(x => x == item).size())
+  end )
+  return val.toStr
+end
